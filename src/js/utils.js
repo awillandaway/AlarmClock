@@ -1,9 +1,8 @@
 /**
- * Generic render function
+ * Generic render function which sets a node's innerHTML to the provided template
  * @param {*} template An element/template to render in the provided node
  * @param {*} node The node to render the template in
  */
-
 export function render(template, node) {
 	if (!node) {
     return;
@@ -13,6 +12,7 @@ export function render(template, node) {
   }
 }
 
+/** Returns the current date in en-US format */
 export function getCurrentDate() {
   let currentDate = new Date().toLocaleDateString('en-US', {  
     day : 'numeric',
@@ -22,9 +22,10 @@ export function getCurrentDate() {
   return currentDate;
 }
 
+/** Returns the current time as a string with padding*/
 export function getCurrentTime() {
   let currentTime = new Date().toLocaleTimeString();
-  return currentTime;
+  return currentTime.substring(0, currentTime.indexOf(':')) < 10 ? `0${currentTime}` : currentTime;
 }
 
 /**
