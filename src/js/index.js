@@ -5,7 +5,6 @@ let currentDate, currentTime, alarmTime;
 
 const hours = document.getElementById("hours");
 const minutes = document.getElementById("minutes");
-const seconds = document.getElementById("seconds");
 const AMorPM = document.getElementById("AM-or-PM");
 const setAlarmBtn = document.getElementById("set-alarm");
 const resetAlarmBtn = document.getElementById("reset-alarm");
@@ -27,10 +26,9 @@ function populateSelectOptions() {
     hours.add(generateOptionElement(padNumber(option)));
   });
 
-  let minAndSecOptions = generateRangeArray(60, 0);
-  minAndSecOptions.forEach(option => {
+  let minutesOptions = generateRangeArray(60, 0);
+  minutesOptions.forEach(option => {
     minutes.add(generateOptionElement(padNumber(option)));
-    seconds.add(generateOptionElement(padNumber(option)));
   });
 
   let AMorPMOptions = ["AM", "PM"];
@@ -40,7 +38,7 @@ function populateSelectOptions() {
 /** Sets an alarm for the current time specified by the select inputs and alerts the user */
 function setAlarm() {
   resetAlarmBtn.disabled = false;
-  alarmTime = `${hours.value}:${minutes.value}:${seconds.value} ${AMorPM.value}`;
+  alarmTime = `${hours.value}:${minutes.value} ${AMorPM.value}`;
   window.alert(`Alarm set for ${alarmTime}`);
   document.getElementById("alarm-time").innerText = `Alarm set for ${alarmTime}`;
 }
@@ -55,7 +53,8 @@ function resetAlarm() {
 
 /** Check to see if the current time matches the alarm time. If so, alert the user and reset the alarm */
 function checkAlarm() {
-  if (currentTime.valueOf() === alarmTime.valueOf()) {
+  let timeString = currentTime.substring(0, 5) + currentTime.substring(8);
+  if (timeString.valueOf() === alarmTime.valueOf()) {
     window.alert("Alarm is going off! Alarm will be reset upon closing this alert.");
     resetAlarmBtn.disabled = true;
     alarmTime = "";
