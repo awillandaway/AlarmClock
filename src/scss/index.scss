@@ -1,5 +1,38 @@
+html {
+	height: 100%;
+}
 body {
-  p {
-    color: purple;
-  }
+	font-family: "Roboto";
+	text-align: center;
+	min-height: 100%;
+	margin: 0;
+	display: flex;
+  justify-content: center;
+	align-items: center;
+	
+	.alarm-clock {
+		padding: 50px 150px;
+    background-color: #409243;
+		border-radius: 75px;
+		
+		button, select {
+			font-family: "Roboto";
+			font-size:18px;
+		}
+		.current-date-time {
+			font-size: 24px;
+			width: 300px;
+			background: black;
+			color: white;
+			border-radius: 10px;
+		}
+
+		.dropdown-section {
+			margin: 10px 0px;
+		}
+
+		.alarm-time {
+			margin: 10px 0px;
+		}
+	}
 }
