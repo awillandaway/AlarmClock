@@ -28,11 +28,15 @@ export function getCurrentTime() {
 
 /**
  * Generate an array (of length len) of sequential numbers starting from the startIndex
- * @param {*} len
- * @param {*} startIndex 
+ * @param {*} start
+ * @param {*} end
  */
-export function generateRangeArray(len, startIndex) {
-  return [...Array(len).keys()].map(i => i + startIndex);
+export function generateRangeArray(start, end) {
+  let array = [];
+  for (let i = start; i <= end; i++) {
+    array.push(i);
+  }
+  return array;
 }
 
 /**

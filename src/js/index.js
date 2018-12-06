@@ -21,12 +21,12 @@ function updateClock() {
 
 /** Populates the options for the select inputs */
 function populateSelectOptions() {
-  let hoursOptions = generateRangeArray(12, 1);
+  let hoursOptions = generateRangeArray(1, 12);
   hoursOptions.forEach(option => {
     hours.add(generateOptionElement(padNumber(option)));
   });
 
-  let minutesOptions = generateRangeArray(60, 0);
+  let minutesOptions = generateRangeArray(0, 59);
   minutesOptions.forEach(option => {
     minutes.add(generateOptionElement(padNumber(option)));
   });
