@@ -9,7 +9,8 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(['build']),
 		new HtmlWebpackPlugin({
-			title: 'Alarm Clock'
+			title: 'Alarm Clock',
+			template: 'src/views/index.html'
 		})
 	],
 	output: {
