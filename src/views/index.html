@@ -2,24 +2,27 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>Alarm Clock</title>
 </head>
   <body>
-    <div class="current-date-time">
-      <div id="date"></div>
-      <div id="time"></div>
-    </div>
-    <h3>Set Alarm Time:</h3>
-    <div class="dropdown-section">
-      <select id="hours"></select>
-      <select id="minutes"></select>
-      <select id="seconds"></select>
-      <select id="AM-or-PM"></select>
-    </div>
-    <div id="alarm-time">No alarm is currently set.</div>
-    <div class="alarm-buttons">
-      <button type="button" id="set-alarm">Set Alarm</button>
-      <button type="button" id="reset-alarm" disabled>Reset Alarm</button>
+    <div class="alarm-clock">
+      <div class="current-date-time">
+        <div id="date"></div>
+        <div id="time"></div>
+      </div>
+      <h3>Set Alarm Time:</h3>
+      <div class="dropdown-section">
+        <select id="hours"></select>
+        <select id="minutes"></select>
+        <select id="seconds"></select>
+        <select id="AM-or-PM"></select>
+      </div>
+      <div id="alarm-time">No alarm is currently set.</div>
+      <div class="alarm-buttons">
+        <button type="button" id="set-alarm">Set Alarm</button>
+        <button type="button" id="reset-alarm" disabled>Reset Alarm</button>
+      </div>
     </div>
   </body>
 </html>
