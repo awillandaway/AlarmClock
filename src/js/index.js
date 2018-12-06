@@ -10,14 +10,17 @@ const AMorPM = document.getElementById("AM-or-PM");
 const setAlarmBtn = document.getElementById("set-alarm");
 const resetAlarmBtn = document.getElementById("reset-alarm");
 
+/** Updates the clock to match the current time. Runs every 1000ms */
 function updateClock() {
   currentDate = getCurrentDate();
   currentTime = getCurrentTime();
-  setTimeout(updateClock, 1000);
   render(currentDate, document.getElementById("date"));
   render(currentTime, document.getElementById("time"));
+  if (alarmTime) { checkAlarm() }
+  setTimeout(updateClock, 1000);
 }
 
+/** Populates the options for the select inputs */
 function populateSelectOptions() {
   let hoursOptions = generateRangeArray(12, 1);
   hoursOptions.forEach(option => {
@@ -34,6 +37,7 @@ function populateSelectOptions() {
   AMorPMOptions.forEach(option => AMorPM.add(generateOptionElement(option)));
 }
 
+/** Sets an alarm for the current time specified by the select inputs and alerts the user */
 function setAlarm() {
   resetAlarmBtn.disabled = false;
   alarmTime = `${hours.value}:${minutes.value}:${seconds.value} ${AMorPM.value}`;
@@ -41,6 +45,7 @@ function setAlarm() {
   document.getElementById("alarm-time").innerText = `Alarm set for ${alarmTime}`;
 }
 
+/** Clears the alarm and alerts the user */
 function resetAlarm() {
   resetAlarmBtn.disabled = true;
   alarmTime = "";
@@ -48,6 +53,17 @@ function resetAlarm() {
   document.getElementById("alarm-time").innerText = "No alarm is currently set.";
 }
 
+/** Check to see if the current time matches the alarm time. If so, alert the user and reset the alarm */
+function checkAlarm() {
+  if (currentTime.valueOf() === alarmTime.valueOf()) {
+    window.alert("Alarm is going off! Alarm will be reset upon closing this alert.");
+    resetAlarmBtn.disabled = true;
+    alarmTime = "";
+    document.getElementById("alarm-time").innerText = "No alarm is currently set.";
+  }
+}
+
+/** Bind the setAlarm and resetAlarm click actions to their respective buttons */
 function bindClickActions() {
   setAlarmBtn.addEventListener("click", setAlarm);
   resetAlarmBtn.addEventListener("click", resetAlarm);
