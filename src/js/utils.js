@@ -7,9 +7,7 @@ export function render(template, node) {
 	if (!node) {
     return;
   }
-  else {
-    node.innerHTML = template;
-  }
+  node.innerHTML = template;
 }
 
 /** Returns the current date in en-US format */
